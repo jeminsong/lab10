@@ -1,4 +1,7 @@
-// TODO: Insert your own header
+// Brenda Ly
+// ly.brenda2013@csu.fullerton.edu
+// @lybrenda
+// Partners: @jeminsong
 
 /* Do not edit below this line. */
 /* Do not edit below this line. */

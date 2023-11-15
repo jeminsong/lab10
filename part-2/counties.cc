@@ -1,4 +1,7 @@
-// TODO: Insert your own header
+// Brenda Ly
+// ly.brenda2013@csu.fullerton.edu
+// @lybrenda
+// Partners: @jeminsong
 
 #include <iostream>
 #include <string>
@@ -39,16 +42,26 @@ int main(int argc, char const *argv[]) {
         "1885508", "267792", "182139",  "3283",    "44118",  "451716",
         "485887",  "552999", "99063",   "65498",   "16060",  "477054",
         "55810",   "839784", "216986",  "83421"}}};
-  // TODO: convert the command line arguments to a std::vector of std::strings.
-  // TODO: Check to make sure you have enough arguments. If you have too few,
-  // print an error message, use AllCountiesString() to show all the counties,
-  // and exit.
-  // TODO: Use CountyIndex() to find the location of the county we are searching
-  // for.
-  // TODO: Check to see if the index returned is not -1. If it is not -1, print
-  // a message with the name of the county and the county's population. Else,
-  // print an error message saying the provided argument could not be found in
-  // the vector. Print a list of all the counties in California using
-  // AllCountiesString() and return 1.
+  std::vector<std::string> arguments{argv, argv + argc};
+  if (arguments.size() < 2) {
+    std::cout << "Error: Please specify a county name on the command line. "
+                 "Exiting.\n";
+    std::cout << "For example: " << arguments.at(0) << " \"Los Angeles\" \n ";
+    std::cout << "The counties in California are: ";
+    std::cout << AllCountiesString(ca_counties) << std::endl;
+    return 1;
+  }
+  std::string target_county = arguments.at(1);
+  int index = CountyIndex(ca_counties, target_county);
+  if (index != -1) {
+    std::cout << "The population of " << target_county << " County is "
+              << ca_counties[1][index] << "." << '\n';
+  } else {
+    std::cout << "Error: " << target_county << " is not in the vector.\n";
+    std::cout << "Please check your spelling.\n";
+    std::cout << "The counties in California are: ";
+    std::cout << "All Counties: " << AllCountiesString(ca_counties) << '\n';
+    return 1;
+  }
   return 0;
 }
